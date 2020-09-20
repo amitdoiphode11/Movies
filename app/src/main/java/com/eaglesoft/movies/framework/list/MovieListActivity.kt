@@ -39,7 +39,7 @@ class MovieListActivity : AppCompatActivity(), MoviePagedAdapter.OnItemClick {
     private fun initView() {
         setUI()
         initViewModel()
-        apiCall(MoviesFilterType.POPULAR)
+        apiCall(null)
     }
 
     private fun initViewModel() {
@@ -60,7 +60,7 @@ class MovieListActivity : AppCompatActivity(), MoviePagedAdapter.OnItemClick {
         rv_movie.adapter = adapter
     }
 
-    private fun apiCall(sortBy: MoviesFilterType) {
+    private fun apiCall(sortBy: MoviesFilterType?) {
         lifecycleScope.launch {
             mViewModel?.getMoviesList(sortBy)?.collectLatest {
                 adapter?.submitData(it)

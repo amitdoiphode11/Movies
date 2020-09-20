@@ -19,7 +19,7 @@ class MovieListViewModel(private val repository: MovieRepository?) : ViewModel()
     private val sortBy: MutableLiveData<MoviesFilterType> = MutableLiveData<MoviesFilterType>()
     private val currentTitle = MutableLiveData<Int>()
 
-    fun getMoviesList(sortByValue: MoviesFilterType): Flow<PagingData<WeMovie>> {
+    fun getMoviesList(sortByValue: MoviesFilterType?): Flow<PagingData<WeMovie>> {
 
         sortBy.value = sortByValue
         currentTitle.value = R.string.action_popular
