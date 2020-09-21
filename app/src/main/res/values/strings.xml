@@ -12,9 +12,4 @@
     <string name="language">language</string>
     <string name="label_overview">Overview</string>
     <string name="label_votes">%1s votes</string>
-
-    <plurals name="duration">
-        <item quantity="one">%d minute</item>
-        <item quantity="other">%1$d minutes</item>
-    </plurals>
 </resources>

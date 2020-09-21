@@ -1,23 +1,25 @@
-package com.eaglesoft.movies.business.network.model
+package com.eaglesoft.movies.business.cache.model
 
 import android.os.Parcelable
+import androidx.room.Entity
 import com.eaglesoft.movies.business.domain.model.Genre
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class WeMovie(
-    var backdrop_path: String? = null,
-    var genres: List<Genre>? = null,
+@Entity(tableName = "movie")
+data class CeMovie(
+    var backdropPath: String? = null,
+    var genres: String? = null,
     var homepage: String? = null,
     var id: Int? = 0,
     var imdbId: String? = null,
-    var original_language: String? = null,
+    var originalLanguage: String? = null,
     var originalTitle: String? = null,
     var overview: String? = null,
     var popularity: Float? = 0f,
-    var poster_path: String? = null,
-    var release_date: String? = null,
+    var posterPath: String? = null,
+    var releaseDate: String? = null,
     var title: String? = null,
     var voteAverage: Float? = 0f,
-    var vote_count: Int? = 0
+    var voteCount: Int? = 0
 ) : Parcelable
