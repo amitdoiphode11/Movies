@@ -1,6 +1,7 @@
 package com.eaglesoft.movies.framework.base
 
 import android.app.Application
+import com.eaglesoft.movies.business.cache.database.AppDatabase
 
 class BaseApplication : Application() {
 
@@ -17,6 +18,7 @@ class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        AppDatabase.getAppDataBase(this)
     }
 
 

@@ -79,4 +79,9 @@ dependencies {
     //Google Material Design
     implementation 'com.google.android.material:material:1.2.0'
 
+    def room = "2.2.5"
+    implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.room:room-ktx:$room"
+    kapt "androidx.room:room-compiler:$room"
+
 }
