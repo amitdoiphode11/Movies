@@ -2,6 +2,7 @@ package com.eaglesoft.movies.business.cache.model
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.eaglesoft.movies.business.domain.model.Genre
 import kotlinx.android.parcel.Parcelize
 
@@ -11,6 +12,7 @@ data class CeMovie(
     var backdropPath: String? = null,
     var genres: String? = null,
     var homepage: String? = null,
+    @PrimaryKey(autoGenerate = false)
     var id: Int? = 0,
     var imdbId: String? = null,
     var originalLanguage: String? = null,
