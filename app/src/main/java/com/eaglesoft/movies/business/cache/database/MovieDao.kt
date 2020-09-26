@@ -13,7 +13,4 @@ interface MovieDao {
 
     @Query("SELECT * FROM movie")
     suspend fun getList(): List<CeMovie?>?
-
-    @Query("SELECT * FROM movie")
-    suspend fun getPagedList(): PagingSource.LoadResult.Page<Int, CeMovie>
 }
