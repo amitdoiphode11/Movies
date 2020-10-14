@@ -48,6 +48,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             this,
             ViewModelFactory(MovieRepositoryImpl(RetrofitBuilder.apiService))
         ).get(MovieDetailsViewModel::class.java)
+
         mViewModel?.getMoviesDetails(imageId)
 
         mViewModel?.movieDetails?.observe(this) {
