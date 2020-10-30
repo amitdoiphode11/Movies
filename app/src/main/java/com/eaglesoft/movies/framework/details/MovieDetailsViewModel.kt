@@ -1,6 +1,7 @@
 package com.eaglesoft.movies.framework.details
 
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +12,7 @@ import com.eaglesoft.movies.business.network.repository.MovieRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class MovieDetailsViewModel(private val repository: MovieRepository?) : ViewModel() {
+class MovieDetailsViewModel @ViewModelInject constructor(private val repository: MovieRepository?) : ViewModel() {
     private val TAG = "MovieDetailsViewModel"
     private val _movieDetails = MutableLiveData<DataState<WeMovie?>?>()
     val movieDetails: LiveData<DataState<WeMovie?>?> = _movieDetails
