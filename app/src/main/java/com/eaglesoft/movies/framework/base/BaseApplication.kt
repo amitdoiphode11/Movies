@@ -2,7 +2,9 @@ package com.eaglesoft.movies.framework.base
 
 import android.app.Application
 import com.eaglesoft.movies.business.cache.database.AppDatabase
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class BaseApplication : Application() {
 
     companion object {

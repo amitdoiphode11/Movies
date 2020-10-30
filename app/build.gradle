@@ -16,6 +16,7 @@ android {
         versionName "1.0"
 
         buildConfigField("String", "API_KEY", API_KEY)
+        buildConfigField("String", "BASE_URL", BASE_URL)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -66,7 +67,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
     kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
+    
     //Multi-dex
     implementation "androidx.multidex:multidex:2.0.1"
 
@@ -88,6 +92,10 @@ dependencies {
     def hilt_version = "2.28.3-alpha"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    def hilt_viewmodels = "1.0.0-alpha01"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_viewmodels"
+    kapt "androidx.hilt:hilt-compiler:$hilt_viewmodels"
+    //Dagger test
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 

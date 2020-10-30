@@ -4,25 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import coil.load
 import coil.size.Scale
 import com.eaglesoft.movies.R
 import com.eaglesoft.movies.business.domain.state.DataState
-import com.eaglesoft.movies.business.network.RetrofitBuilder
-import com.eaglesoft.movies.business.network.model.WeGenre
 import com.eaglesoft.movies.business.network.model.WeMovie
-import com.eaglesoft.movies.business.network.repository.MovieRepositoryImpl
-import com.eaglesoft.movies.framework.base.ViewModelFactory
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.google.android.material.chip.Chip
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
+@AndroidEntryPoint
 class MovieDetailsActivity : AppCompatActivity() {
     private var imageId: Int? = null
-    private var mViewModel: MovieDetailsViewModel? = null
+    private val mViewModel: MovieDetailsViewModel by viewModels()
     private var movie: WeMovie? = null
 
     companion object {
@@ -44,10 +42,10 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        mViewModel = ViewModelProvider(
+        /*mViewModel = ViewModelProvider(
             this,
             ViewModelFactory(MovieRepositoryImpl(RetrofitBuilder.apiService))
-        ).get(MovieDetailsViewModel::class.java)
+        ).get(MovieDetailsViewModel::class.java)*/
 
         mViewModel?.getMoviesDetails(imageId)
 

@@ -1,5 +1,6 @@
 package com.eaglesoft.movies.framework.list
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,7 +16,7 @@ import com.eaglesoft.movies.business.network.repository.MovieRepository
 import com.eaglesoft.movies.business.util.MoviesFilterType
 import kotlinx.coroutines.flow.Flow
 
-class MovieListViewModel(private val repository: MovieRepository?) : ViewModel() {
+class MovieListViewModel @ViewModelInject constructor (private val repository: MovieRepository?) : ViewModel() {
     private val sortBy: MutableLiveData<MoviesFilterType> = MutableLiveData<MoviesFilterType>()
     private val currentTitle = MutableLiveData<Int>()
 
