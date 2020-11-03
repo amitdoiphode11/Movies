@@ -27,7 +27,7 @@ jobs:
           with:
             java-version:  1.8
         - name: Gradle Android
-          run: ./gradle build
+          run: ./gradlew build
         - name: Upload APK
           uses: actions/upload-artifact@v2.2.0
           with:
