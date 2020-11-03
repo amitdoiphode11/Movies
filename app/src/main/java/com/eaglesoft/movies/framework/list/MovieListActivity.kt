@@ -3,21 +3,17 @@ package com.eaglesoft.movies.framework.list
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.eaglesoft.movies.R
-import com.eaglesoft.movies.business.network.RetrofitBuilder
 import com.eaglesoft.movies.business.network.model.WeMovie
-import com.eaglesoft.movies.business.network.repository.MovieRepositoryImpl
 import com.eaglesoft.movies.business.util.MoviesFilterType
 import com.eaglesoft.movies.business.util.extension.tintMenuIcon
-import com.eaglesoft.movies.framework.base.ViewModelFactory
 import com.eaglesoft.movies.framework.details.MovieDetailsActivity
 import com.eaglesoft.movies.framework.list.adapter.MoviePagedAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +23,7 @@ import kotlinx.coroutines.launch
 class MovieListActivity : AppCompatActivity(), MoviePagedAdapter.OnItemClick {
     private val TAG = "MainActivity"
     private var adapter: MoviePagedAdapter? = null
-    private var mViewModel: MovieListViewModel? = null
+    private val mViewModel: MovieListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +39,7 @@ class MovieListActivity : AppCompatActivity(), MoviePagedAdapter.OnItemClick {
     }
 
     private fun initViewModel() {
-        mViewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(MovieRepositoryImpl(RetrofitBuilder.apiService))
-        ).get(MovieListViewModel::class.java)
-
-        mViewModel?.getCurrentTitle()?.observe(this, Observer {
+        mViewModel.getCurrentTitle()?.observe(this, Observer {
             supportActionBar?.title = it?.let { it1 -> getString(it1) }
         })
 

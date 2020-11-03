@@ -42,27 +42,23 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        /*mViewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(MovieRepositoryImpl(RetrofitBuilder.apiService))
-        ).get(MovieDetailsViewModel::class.java)*/
 
-        mViewModel?.getMoviesDetails(imageId)
+        mViewModel.getMoviesDetails(imageId)
 
-        mViewModel?.movieDetails?.observe(this) {
+        mViewModel.movieDetails.observe(this) {
             when (it) {
                 is DataState.Success -> {
                     /*progressBar.visibility = View.GONE
-                    textView.visibility = View.GONE*/
+                        textView.visibility = View.GONE*/
                     showContent(it.data)
                 }
                 is DataState.Loading -> {
                     /* progressBar.visibility = View.VISIBLE
-                    textView.visibility = View.GONE*/
+                        textView.visibility = View.GONE*/
                 }
                 is DataState.Error -> {
                     /*progressBar.visibility = View.GONE
-                    textView.visibility = View.VISIBLE*/
+                        textView.visibility = View.VISIBLE*/
                 }
             }
         }
